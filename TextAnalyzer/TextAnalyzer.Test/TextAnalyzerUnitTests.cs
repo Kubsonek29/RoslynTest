@@ -13,9 +13,40 @@ namespace TextAnalyzer.Test
         [TestMethod]
         public async Task TestMethod1()
         {
-            var test = @"";
+            var test = @"
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Diagnostics;
 
-            await VerifyCS.VerifyAnalyzerAsync(test);
+    namespace ConsoleApplication1
+    {
+        public class tester
+        {   
+            int {|#0:lethal|};
+        }
+    }";
+
+            var fixtest = @"
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Diagnostics;
+
+    namespace ConsoleApplication1
+    {
+        public class tester
+        {   
+            int onetwothree;
+        }
+    }";
+
+            var expected = VerifyCS.Diagnostic("lethalcheck").WithLocation(0).WithArguments("lethal");
+            await VerifyCS.VerifyCodeFixAsync(test, expected, fixtest);
         }
 
         //Diagnostic and CodeFix both triggered and checked for

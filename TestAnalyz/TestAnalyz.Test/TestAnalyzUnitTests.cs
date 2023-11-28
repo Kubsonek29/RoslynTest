@@ -13,9 +13,64 @@ namespace TestAnalyz.Test
         [TestMethod]
         public async Task TestMethod1()
         {
-            var test = @"";
+            var test =@"using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Diagnostics;
 
-            await VerifyCS.VerifyAnalyzerAsync(test);
+namespace ConsoleApplication1
+{
+    public class test
+    {   
+        public static void func()
+        {
+            for(;;)
+               for(;;)
+               {
+                  int i;
+               }
+        }
+
+        public static void fun2()
+        {
+            int x;
+        }
+    }
+}";
+
+            var fixtest = @"using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Diagnostics;
+
+namespace ConsoleApplication1
+{
+    public class test
+    {   
+        public static void func()
+        {
+            for(;;)
+            {
+               for(;;)
+               {
+                  int i;
+               }
+            }
+        }
+
+        public static void fun2()
+        {
+            int x;
+        }
+    }
+}";
+
+            var expected = VerifyCS.Diagnostic("BraceAnalyzer").WithSpan(16, 16, 18, 17);
+            await VerifyCS.VerifyCodeFixAsync(test, expected, fixtest);
         }
 
         //Diagnostic and CodeFix both triggered and checked for
