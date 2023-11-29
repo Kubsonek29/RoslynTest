@@ -61,7 +61,7 @@ namespace TextAnalyzer {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 1.
+        ///   Looks up a localized string similar to opis.
         /// </summary>
         internal static string AnalyzerDescription {
             get {
@@ -70,7 +70,7 @@ namespace TextAnalyzer {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 2.
+        ///   Looks up a localized string similar to format wiadomosci.
         /// </summary>
         internal static string AnalyzerMessageFormat {
             get {
@@ -79,7 +79,7 @@ namespace TextAnalyzer {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 3.
+        ///   Looks up a localized string similar to tytul.
         /// </summary>
         internal static string AnalyzerTitle {
             get {

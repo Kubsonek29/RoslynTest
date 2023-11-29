@@ -1,8 +1,8 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Threading.Tasks;
 using VerifyCS = TextAnalyzer.Test.CSharpCodeFixVerifier<
-    TextAnalyzer.TextAnalyzerAnalyzer,
-    TextAnalyzer.TextAnalyzerCodeFixProvider>;
+    TextAnalyzer.AnalizatorProfesorowy,
+    TextAnalyzer.AnalizatorProfesorowyCodeFixProvider>;
 
 namespace TextAnalyzer.Test
 {
@@ -13,40 +13,9 @@ namespace TextAnalyzer.Test
         [TestMethod]
         public async Task TestMethod1()
         {
-            var test = @"
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using System.Diagnostics;
+            var test = @"";
 
-    namespace ConsoleApplication1
-    {
-        public class tester
-        {   
-            int {|#0:lethal|};
-        }
-    }";
-
-            var fixtest = @"
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using System.Diagnostics;
-
-    namespace ConsoleApplication1
-    {
-        public class tester
-        {   
-            int onetwothree;
-        }
-    }";
-
-            var expected = VerifyCS.Diagnostic("lethalcheck").WithLocation(0).WithArguments("lethal");
-            await VerifyCS.VerifyCodeFixAsync(test, expected, fixtest);
+            await VerifyCS.VerifyAnalyzerAsync(test);
         }
 
         //Diagnostic and CodeFix both triggered and checked for
@@ -54,36 +23,40 @@ namespace TextAnalyzer.Test
         public async Task TestMethod2()
         {
             var test = @"
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using System.Diagnostics;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Diagnostics;
 
-    namespace ConsoleApplication1
+namespace ConsoleApplication1
+{
+    class {|#0:profesor|}
     {
-        class {|#0:TypeName|}
-        {   
-        }
-    }";
+
+    }
+}";
 
             var fixtest = @"
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using System.Diagnostics;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Diagnostics;
 
-    namespace ConsoleApplication1
+namespace ConsoleApplication1
+{
+    class ProfesorJacekMatulewski
     {
-        class TYPENAME
-        {   
-        }
-    }";
 
-            var expected = VerifyCS.Diagnostic("TextAnalyzer").WithLocation(0).WithArguments("TypeName");
+    }
+}";
+
+            var expected = VerifyCS.Diagnostic(AnalizatorProfesorowy.DiagnosticId).WithSpan(11, 11, 11, 19).WithArguments("Found 'profesor' in the code");
+            // 11, 15 - 11 od lewej i 11 linijka kodu od góry  - start   i koniec syntaxu - 11, 19 czyli ostatnia litera - profeso[r] (liczymy od 1 nie od 0)
+            //argumenty - opis diagnostyki
             await VerifyCS.VerifyCodeFixAsync(test, expected, fixtest);
         }
     }

@@ -13,15 +13,20 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestAnalyz.Test", "TestAnal
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestAnalyz.Vsix", "TestAnalyz\TestAnalyz.Vsix\TestAnalyz.Vsix.csproj", "{A5EDA656-FEB8-4F04-A017-F9085335CE70}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextAnalyzer", "TextAnalyzer\TextAnalyzer\TextAnalyzer.csproj", "{A343E334-70CE-4435-ACBE-B8266A5C22C0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TextAnalyzer", "TextAnalyzer\TextAnalyzer\TextAnalyzer.csproj", "{A343E334-70CE-4435-ACBE-B8266A5C22C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextAnalyzer.CodeFixes", "TextAnalyzer\TextAnalyzer.CodeFixes\TextAnalyzer.CodeFixes.csproj", "{637CE5DC-AAFE-4554-AA83-DB103AC320D6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TextAnalyzer.CodeFixes", "TextAnalyzer\TextAnalyzer.CodeFixes\TextAnalyzer.CodeFixes.csproj", "{637CE5DC-AAFE-4554-AA83-DB103AC320D6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextAnalyzer.Package", "TextAnalyzer\TextAnalyzer.Package\TextAnalyzer.Package.csproj", "{7B43B074-F6A9-4ABD-A25E-AD8782B2713F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TextAnalyzer.Package", "TextAnalyzer\TextAnalyzer.Package\TextAnalyzer.Package.csproj", "{7B43B074-F6A9-4ABD-A25E-AD8782B2713F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextAnalyzer.Test", "TextAnalyzer\TextAnalyzer.Test\TextAnalyzer.Test.csproj", "{FDB4E6D5-3CF4-43A5-A2CB-EE1C2EE2A67C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TextAnalyzer.Test", "TextAnalyzer\TextAnalyzer.Test\TextAnalyzer.Test.csproj", "{FDB4E6D5-3CF4-43A5-A2CB-EE1C2EE2A67C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextAnalyzer.Vsix", "TextAnalyzer\TextAnalyzer.Vsix\TextAnalyzer.Vsix.csproj", "{91C79833-A197-4B1B-9124-0EC924BF8FD0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TextAnalyzer.Vsix", "TextAnalyzer\TextAnalyzer.Vsix\TextAnalyzer.Vsix.csproj", "{91C79833-A197-4B1B-9124-0EC924BF8FD0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E8836B77-EAFC-4B09-AA2C-1C576993BDD3}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

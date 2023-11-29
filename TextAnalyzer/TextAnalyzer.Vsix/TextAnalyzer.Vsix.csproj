@@ -16,6 +16,7 @@
     <CopyBuildOutputToOutputDirectory>false</CopyBuildOutputToOutputDirectory>
     <CopyOutputSymbolsToOutputDirectory>false</CopyOutputSymbolsToOutputDirectory>
     <VSSDKTargetPlatformRegRootSuffix>Roslyn</VSSDKTargetPlatformRegRootSuffix>
+	<CodeAnalysisRuleSet></CodeAnalysisRuleSet>
   </PropertyGroup>
 
   <ItemGroup>
@@ -34,7 +35,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\TextAnalyzer.CodeFixes\TextAnalyzer.CodeFixes.csproj" />
-    <ProjectReference Include="..\TextAnalyzer\TextAnalyzer.csproj" />
+	  <ProjectReference Include="..\TextAnalyzer\TextAnalyzer.csproj">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	  </ProjectReference>
   </ItemGroup>
 
   <ItemGroup>
